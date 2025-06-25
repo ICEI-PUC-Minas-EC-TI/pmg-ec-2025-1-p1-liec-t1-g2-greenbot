@@ -17,6 +17,8 @@ Mini Bomba Submersível (3-6V) – Responsável por bombear a água do reservat�
 
 Módulo Relé 1 Canal (5V) – Controla o acionamento da bomba de água a partir dos sinais enviados pelo ESP 32, garantindo que a irrigação ocorra apenas quando necessário.
 
+Display LCD 2.4” TFT (240x320, SPI) – Utilizado para exibir informações visuais de forma clara e colorida, como dados de umidade, temperatura e iluminação. O display também apresenta um rosto animado do vaso, com expressões que mudam de acordo com o estado dos sensores. Por exemplo, o rosto aparece feliz quando a planta está em condições ideais e triste quando precisa de cuidados. Essa abordagem lúdica proporciona uma interação mais amigável e intuitiva com o usuário, além de aproveitar a capacidade gráfica e resolução superior da tela TFT.
+
 Jumpers e fios diversos – Utilizados para realizar as interligações entre os componentes e o microcontrolador.
 
 # Desenvolvimento
