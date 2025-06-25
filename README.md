@@ -1,29 +1,32 @@
 # TÍTULO DO PROJETO
 
-`CAMPUS/UNIDADE`
+`PUC Minas/Coreu`
 
-`CURSO`
+`Engenharia da Computação`
 
-`SEMESTRE`
+`1º Semestre`
 
-`DISCIPLINA`
+`Laboratório de Introdução à Computação`
 
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
+* Márcio Mendes Gazzinelli Gomes
+* André de Oliveira Campolina
+* Guilherme Santos Pedrosa
+* Joao Paulo Gomes dos Santos
+* Josué Procópio Tchykolamuenho da Silva Antônio
+* Victor Gomes Barreto
 
 ## Orientador
 
-* Nome completo do professor 1
+* Profa. Marta Dias Moreira Noronha
 
 ## Resumo
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O GreenBot é um projeto de vaso inteligente que integra sensores com um aplicativo desenvolvido no App Inventor. A proposta é utilizar um ESP32 para monitorar condições ambientais como luminosidade, umidade e temperatura, de acordo com as necessidades específicas da planta.
+
+Com base na espécie cadastrada, o ESP32 analisa os dados dos sensores e envia um alerta ao aplicativo no celular do usuário, informando se a planta precisa de cuidados. Além disso, uma tela LCD exibe expressões faciais — como felicidade, tristeza, sonolência ou raiva — para indicar visualmente o estado da planta. Dessa forma, o usuário pode saber se ela precisa de água, mais ou menos luz, ou se deve ser movida para um local mais quente ou mais fresco.
 
 # Código (do arduino ou esp32)
 
