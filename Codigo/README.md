@@ -1,101 +1,209 @@
-//Código do Arduino/ESP
+#include <Adafruit_GFX.h>
+#include <Adafruit_ILI9341.h>
+#include <SPI.h>
+#include <DHT.h>
+#include <DHT_U.h>
 
-#include <OneWire.h>
-#include <DallasTemperature.h>
+// === DEFINIÇÃO DOS PINOS ===
+#define TFT_CS    22
+#define TFT_DC    5
+#define TFT_RST   4
+#define TFT_SCK   18
+#define TFT_MOSI  23
+#define TFT_MISO  -1  // Não usado para display
 
-#define rele 3
-#define sensor A0
-#define leituras 100
-int limiar = 500;
+#define PINO_RELE 25
+#define SENSOR_SOLO 35
+#define PINO_DHT 15
+#define DHTTYPE DHT22
+#define PINO_LDR 34
+#define PINO_BOIA 33
 
+// === OBJETOS E VARIÁVEIS ===
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
+DHT dht(PINO_DHT, DHTTYPE);
+
+int limiarSoloSeco = 7000;  // Limite para considerar solo seco
 unsigned long tempoLigado = 1000;
-unsigned long tempoDesligado = 1500;
-#define BOIA_INFERIOR 13
-#define LDR_PIN A1
-#define ONE_WIRE_BUS 2
+unsigned long tempoDesligado = 3000;
 
-OneWire oneWire(ONE_WIRE_BUS);
-DallasTemperature sensors(&oneWire);
+// Variáveis globais para temperatura e umidade (lidas uma vez)
+float temperatura = 0;
+float umidade = 0;
 
-void setup() {
-  Serial.begin(9600);
-  pinMode(rele, OUTPUT);
-  pinMode(sensor, INPUT);
-  pinMode(ONE_WIRE_BUS, INPUT);
-  digitalWrite(rele, HIGH);
-  sensors.begin();
+// === EXIBIÇÃO DAS EXPRESSÕES ===
+void desenharTextoLegenda(const char* texto) {
+  tft.setCursor(20, 20);
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setTextSize(2);
+  tft.println(texto);
 }
 
+void desenharRostoFeliz() {
+  tft.fillScreen(ILI9341_DARKGREEN);
+  uint16_t cor = ILI9341_WHITE;
+  tft.fillRect(60, 80, 20, 20, cor);
+  tft.fillRect(160, 80, 20, 20, cor);
+  for (int x = 60; x <= 180; x++) {
+    int y = -0.01 * (x - 120) * (x - 120) + 180;
+    tft.drawPixel(x, y, cor);
+    tft.drawPixel(x, y - 1, cor);
+    tft.drawPixel(x, y - 2, cor);
+  }
+  desenharTextoLegenda("Rosto Feliz :)");
+}
+
+void desenharRostoTriste() {
+  tft.fillScreen(ILI9341_RED);
+  uint16_t cor = ILI9341_WHITE;
+  tft.fillRect(60, 80, 20, 20, cor);
+  tft.fillRect(160, 80, 20, 20, cor);
+  for (int x = 60; x <= 180; x++) {
+    int y = 0.01 * (x - 120) * (x - 120) + 140;
+    tft.drawPixel(x, y, cor);
+    tft.drawPixel(x, y + 1, cor);
+    tft.drawPixel(x, y + 2, cor);
+  }
+  desenharTextoLegenda("Rosto Triste :(");
+}
+
+void desenharRostoSono() {
+  tft.fillScreen(ILI9341_PURPLE);
+  uint16_t cor = ILI9341_WHITE;
+  for (int x = 0; x <= 20; x++) {
+    int y = -0.1 * (x - 10) * (x - 10) + 10;
+    tft.drawPixel(60 + x, 90 + y, cor);
+    tft.drawPixel(160 + x, 90 + y, cor);
+  }
+  tft.drawFastHLine(80, 180, 80, cor);
+  desenharTextoLegenda("Zzzzz...");
+}
+
+void desenharRostoCalor() {
+  tft.fillScreen(ILI9341_BLUE);
+  uint16_t cor = ILI9341_WHITE;
+  uint16_t corLingua = ILI9341_WHITE;
+  for (int i = 0; i < 5; i++) {
+    tft.drawLine(60 + i, 80, 80 + i, 100, cor);
+    tft.drawLine(80 + i, 80, 60 + i, 100, cor);
+    tft.drawLine(160 + i, 80, 180 + i, 100, cor);
+    tft.drawLine(180 + i, 80, 160 + i, 100, cor);
+  }
+  tft.fillRect(100, 160, 40, 10, cor);
+  tft.fillCircle(130, 170, 8, corLingua);
+  desenharTextoLegenda("Muito Calor!");
+}
+
+void desenharRostoSemAgua() {
+  tft.fillScreen(ILI9341_MAROON);
+  uint16_t cor = ILI9341_WHITE;
+  tft.drawCircle(70, 90, 10, cor);
+  tft.drawCircle(170, 90, 10, cor);
+  tft.drawLine(80, 170, 160, 170, cor);
+  tft.drawLine(80, 170, 120, 190, cor);
+  tft.drawLine(160, 170, 120, 190, cor);
+  desenharTextoLegenda("Sem Agua!");
+}
+
+// === SETUP ===
+void setup() {
+  Serial.begin(9600);
+  dht.begin();
+  pinMode(PINO_BOIA, INPUT_PULLUP);
+  pinMode(PINO_RELE, OUTPUT);
+  pinMode(SENSOR_SOLO, INPUT);
+  digitalWrite(PINO_RELE, LOW);
+
+  tft.begin();
+  tft.setRotation(0);
+  tft.setAddrWindow(0, 0, 240, 320);
+
+  // Leitura de temperatura e umidade (somente uma vez)
+  float somaTemperatura = 0;
+  float somaUmidade = 0;
+
+  for (int i = 0; i < 3; i++) {
+    float t = dht.readTemperature();
+    float h = dht.readHumidity();
+    if (!isnan(t)) somaTemperatura += t;
+    if (!isnan(h)) somaUmidade += h;
+    delay(1000);
+  }
+
+  temperatura = somaTemperatura / 3.0;
+  umidade = somaUmidade / 3.0;
+
+  Serial.print("Temperatura média (setup): ");
+  Serial.println(temperatura);
+  Serial.print("Umidade média (setup): ");
+  Serial.println(umidade);
+
+  desenharRostoFeliz();
+}
+
+// === LOOP ===
 void loop() {
-  // -------------------------------
-  // LEITURA DA TEMPERATURA
-  sensors.requestTemperatures();
-  float temperatureC = sensors.getTempCByIndex(0);
-  
-  Serial.print("Temperatura: ");
-  if (temperatureC == -127) {
-    Serial.println("Erro: sensor não encontrado!");
-  } else {
-    Serial.print(temperatureC);
-    Serial.println(" ºC");
-  }
+  int estadoBoia = digitalRead(PINO_BOIA);
 
-  // -------------------------------
-  // LEITURA DA LUZ (MÉDIA DE 10)
+  // Mostrar a temperatura/umidade fixa
+  Serial.print("Temperatura (fixa): ");
+  Serial.println(temperatura);
+  Serial.print("Umidade (fixa): ");
+  Serial.println(umidade);
+
+  // LDR
   long somaLuz = 0;
-  for (int i = 0; i < 10; i++) {
-    somaLuz += analogRead(LDR_PIN);
-    delay(10);
+  for (int i = 0; i < 100; i++) {
+    somaLuz += analogRead(PINO_LDR);
+    delay(5);
   }
-  int mediaLuz = somaLuz / 10;
-
+  int mediaLuz = somaLuz / 100;
   Serial.print("Média LDR: ");
   Serial.println(mediaLuz);
+  Serial.println(mediaLuz < 500 ? "Está CLARO" : "Está ESCURO");
 
-  if (mediaLuz < 450) {
-    Serial.println("Está CLARO");
+  // Solo
+  long somaSolo = 0;
+  for (int i = 0; i < 100; i++) {
+    somaSolo += analogRead(SENSOR_SOLO);
+    delay(5);
+  }
+  int mediaSolo = somaSolo / 100;
+  Serial.print("Leitura média do sensor de solo: ");
+  Serial.println(mediaSolo);
+
+  // Boia
+  if (estadoBoia != LOW) {
+    Serial.println("Boia ATIVADA: Nível de água presente!");
   } else {
-    Serial.println("Está ESCURO");
+    Serial.println("Boia DESATIVADA: Nível de água baixo!");
   }
 
-  // -------------------------------
-  // LEITURA DA UMIDADE (MÉDIA DE 100)
-  long somaLeituras = 0;
-  for (int i = 0; i < leituras; i++) {
-    somaLeituras += analogRead(sensor);
-    delay(50);
+  // Rosto no display
+  if (estadoBoia == LOW) {
+    desenharRostoSemAgua();
+  } else if (temperatura >= 30) {
+    desenharRostoCalor();
+  } else if (mediaLuz >= 500) {
+    desenharRostoSono();
+  } else if (mediaSolo > limiarSoloSeco) {
+    desenharRostoTriste();
+  } else {
+    desenharRostoFeliz();
   }
-  int mediaLeitura = somaLeituras / leituras;
 
-  Serial.print("Leitura média do sensor: ");
-  Serial.println(mediaLeitura);
-
-  // -------------------------------
-  // MOTOR INTERMITENTE SE UMIDADE BAIXA
-  if(mediaLeitura < limiar) {
-    digitalWrite(rele, LOW);
-    Serial.println("Motor LIGADO (intermitente)");
+  // Controle da bomba
+  if (mediaSolo < limiarSoloSeco) {
+    Serial.println("Solo seco. Ligando bomba...");
+    digitalWrite(PINO_RELE, HIGH);
     delay(tempoLigado);
-    
-    digitalWrite(rele, HIGH);
-    Serial.println("Motor DESLIGADO (intermitente)");
+    digitalWrite(PINO_RELE, LOW);
+    Serial.println("Bomba desligada.");
     delay(tempoDesligado);
-    }
-  // RELEITURA DA UMIDADE
-  somaLeituras = 0;
-  for (int i = 0; i < leituras; i++) {
-    somaLeituras += analogRead(sensor);
-    delay(50);
+  } else {
+    digitalWrite(PINO_RELE, LOW);
+    Serial.println("Solo úmido. Bomba não será ligada.");
   }
-    
-    mediaLeitura = somaLeituras / leituras;
 
-    Serial.print("Nova leitura média do sensor: ");
-    Serial.println(mediaLeitura);
-  
-
-  Serial.println("Umidade suficiente - Motor PARADO.");
-  digitalWrite(rele, HIGH);
-
-  delay(100);
+  delay(1000);
 }
