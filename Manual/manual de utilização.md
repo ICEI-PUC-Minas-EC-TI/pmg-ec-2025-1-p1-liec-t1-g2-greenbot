@@ -2,20 +2,20 @@
 ## Instruções de utilização
 
 📲 Instalação do Aplicativo
-Acesse o link fornecido do App Inventor ou baixe o arquivo .apk do GreenBot.
+-Acesse o link fornecido do App Inventor ou baixe o arquivo .apk do GreenBot.
 
-Instale o aplicativo no seu celular Android (autorize apps de fontes desconhecidas, se necessário).
+-Instale o aplicativo no seu celular Android (autorize apps de fontes desconhecidas, se necessário).
 
-Abra o aplicativo e siga as instruções de pareamento com o GreenBot via Wi-Fi.
+-Abra o aplicativo e siga as instruções de pareamento com o GreenBot via Wi-Fi.
 
 🌿 Primeira Configuração
-Ligue o GreenBot com a fonte de energia.
+-Ligue o GreenBot com a fonte de energia.
 
-Conecte-o à sua rede Wi-Fi usando as instruções no app.
+-Conecte-o à sua rede Wi-Fi usando as instruções no app.
 
-No aplicativo, cadastre a espécie da sua planta. Isso definirá os parâmetros ideais de luz, umidade e temperatura.
+-No aplicativo, cadastre a espécie da sua planta. Isso definirá os parâmetros ideais de luz, umidade e temperatura.
 
-Posicione o GreenBot próximo à planta.
+-Posicione o GreenBot próximo à planta.
 
 🛰️ Funcionamento
 Coleta de Dados
@@ -33,31 +33,31 @@ Com base na espécie cadastrada, os dados coletados são comparados com os valor
 Sinais Visuais
 A tela LCD exibe expressões faciais:
 
-😊 Feliz — Planta está saudável
+-😊 Feliz — Planta está saudável
 
-😢 Triste — Necessita de cuidados urgentes
+-😢 Triste — Necessita de cuidados urgentes
 
-😴 Sonolenta — Ambiente está fora do ideal, mas não crítico
+-😴 Sonolenta — Ambiente está fora do ideal, mas não crítico
 
-😠 Com raiva — Condição muito inadequada (ex: calor extremo, solo seco)
+-😠 Com raiva — Condição muito inadequada (ex: calor extremo, solo seco)
 
 Notificações no App
 O usuário recebe no celular alertas como:
 
-"Sua planta precisa de água!"
+-"Sua planta precisa de água!"
 
-"Ambiente muito escuro para essa espécie."
+-"Ambiente muito escuro para essa espécie."
 
-"Temperatura fora do ideal. Reposicione o vaso."
+-"Temperatura fora do ideal. Reposicione o vaso."
 
 ✅ Cuidados e Manutenção
-Verifique regularmente a fonte de alimentação.
+-Verifique regularmente a fonte de alimentação.
 
-Mantenha os sensores limpos e sem obstruções.
+-Mantenha os sensores limpos e sem obstruções.
 
-Atualize o aplicativo sempre que possível para receber melhorias.
+-Atualize o aplicativo sempre que possível para receber melhorias.
 
-Recalibre os sensores se necessário (manual avançado disponível).
+-Recalibre os sensores se necessário (manual avançado disponível).
 
 ❓ Dúvidas Frequentes
 1. O que fazer se o LCD não acender?
