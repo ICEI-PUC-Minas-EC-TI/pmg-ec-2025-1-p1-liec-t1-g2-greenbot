@@ -12,4 +12,8 @@ Bit a Bit. Arduino - Sistema de irrigação automático. YouTube, 15 nov. 2021. 
 
 WR Kits. SENSOR DE UMIDADE E TEMPERATURA DHT22 COM ARDUINO. YouTube, 3 set. 2017. Disponível em: https://youtu.be/o7hMAODajIc. Acesso em: 16 jun. 2025.
 
+TOReletronics. Cómo Programar un ESP32 y Enviar Datos del DHT11/DHT22 por Bluetooth con App Inventor. YouTube, 6 jan. 2025. Disponível em: https://youtu.be/6G1GL7C5Yp4?t=1011. Acesso em: 17 jun. 2025.
+
+
+
 
