@@ -17,26 +17,14 @@ https://github.com/user-attachments/assets/169fa459-9134-4c0e-8ca5-b73fabbdfe32
 
 
 
-https://github.com/user-attachments/assets/8f529d87-e057-4d07-b0db-650cf0f5d450
+![Tentativa 1 de funcionamento LCD](https://github.com/user-attachments/assets/8f529d87-e057-4d07-b0db-650cf0f5d450).
 
 ![Tentativa 1 de funcionamento LCD](https://github.com/user-attachments/assets/01a29348-d8aa-4c69-b8dd-cff72251c2ff)
 ![Teste do LCD com as informações da planta](https://github.com/user-attachments/assets/ed12b959-dddb-4fa5-bce4-4bdd4bb46851)
-
-
-https://github.com/user-attachments/assets/b48aa2b2-5f9b-4638-b2f7-51d76bdf0688
-
 ![Teste rosto feliz](https://github.com/user-attachments/assets/92dbbc68-61de-4a99-acc8-6226aaf2bda6)
 ![Teste rosto sonolento](https://github.com/user-attachments/assets/11a1220d-7b3d-4c1f-ac47-a951482a918d)
 ![Teste rosto triste](https://github.com/user-attachments/assets/b2d93417-5a15-41a1-b8d9-d6ec756d5ee2)
 
-
 https://github.com/user-attachments/assets/9cc85eeb-1c03-43fb-9537-1d06e28b769c
 
-
-
 https://github.com/user-attachments/assets/8073c7f6-2d03-4197-95b9-d8cc1baf2685
-
-
-
-https://github.com/user-attachments/assets/0e067720-950e-4ea8-a5e4-23bcc00bc523
-
