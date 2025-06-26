@@ -1,30 +1,14 @@
 # Apresentação da Solução
-
-![Código conexão bluetooth](https://github.com/user-attachments/assets/43123828-643a-4fba-a528-3eef2e9249e3)
-![Código fonte do aplicativo](https://github.com/user-attachments/assets/94f543cd-42cb-42c6-9d2b-aa8b17714052)
-![Esquema elétrico (Tinkercad)](https://github.com/user-attachments/assets/f6b5c39f-49fa-45ed-9cbd-4c0d03154ace)
-![Integração do sensor de umidade](https://github.com/user-attachments/assets/1ae7dc13-739f-4938-9c61-16150a0181f5)
-![Primeiro protótipo montado](https://github.com/user-attachments/assets/13a64cb7-2060-4484-be45-c3318f17aa20)
-
-
-https://github.com/user-attachments/assets/19e875de-1f2c-4626-9aaf-acd08d034a06
-
-![Primeiro teste da tela](https://github.com/user-attachments/assets/07c29c49-26e2-4737-91aa-0ba0d1f3deed)
-![Primeiro teste do app](https://github.com/user-attachments/assets/06cc0e84-0aff-41ce-a40f-0ec6fce7d82b)
-
-
-https://github.com/user-attachments/assets/169fa459-9134-4c0e-8ca5-b73fabbdfe32
-
-
-
-![Tentativa 1 de funcionamento LCD](https://github.com/user-attachments/assets/8f529d87-e057-4d07-b0db-650cf0f5d450).
-
-![Tentativa 1 de funcionamento LCD](https://github.com/user-attachments/assets/01a29348-d8aa-4c69-b8dd-cff72251c2ff)
-![Teste do LCD com as informações da planta](https://github.com/user-attachments/assets/ed12b959-dddb-4fa5-bce4-4bdd4bb46851)
-![Teste rosto feliz](https://github.com/user-attachments/assets/92dbbc68-61de-4a99-acc8-6226aaf2bda6)
-![Teste rosto sonolento](https://github.com/user-attachments/assets/11a1220d-7b3d-4c1f-ac47-a951482a918d)
-![Teste rosto triste](https://github.com/user-attachments/assets/b2d93417-5a15-41a1-b8d9-d6ec756d5ee2)
-
-https://github.com/user-attachments/assets/9cc85eeb-1c03-43fb-9537-1d06e28b769c
-
-https://github.com/user-attachments/assets/8073c7f6-2d03-4197-95b9-d8cc1baf2685
+Todos os vídeos foram enviados para o Google Drive por limitações de tamanho dos mesmos do GitHub, segue o link para acesso a eles: https://drive.google.com/drive/folders/1u3yzn3b2syIV8TD7N8Kk5qjZOl4gke21?usp=sharing
+![Código conexão bluetooth](https://github.com/user-attachments/assets/47b6cccf-3ec6-4fbc-9783-6e943e4e47a2)
+![Código fonte do aplicativo](https://github.com/user-attachments/assets/f9a46b88-4698-460c-a844-8d70212e9a3a)
+![Esquema elétrico (Tinkercad)](https://github.com/user-attachments/assets/dbedd509-ccb8-4e47-ba06-3d939c841573)
+![Integração do sensor de umidade](https://github.com/user-attachments/assets/e580fdc3-8094-4926-982c-9b91eb48ef58)
+![Primeiro protótipo montado](https://github.com/user-attachments/assets/0498e269-3f08-414c-8e2f-e6fa4e6c2a8a)
+![Primeiro teste da tela](https://github.com/user-attachments/assets/d272297b-33d0-4d45-8bfa-014f55cca925)
+![Primeiro teste do app](https://github.com/user-attachments/assets/2a7698c0-8b2f-43e6-a49a-2d4be0b25b76)
+![Tentativa 1 de funcionamento LCD](https://github.com/user-attachments/assets/29bed528-d59a-445b-8b03-1a4c73a7c300)
+![Teste do LCD com as informações da planta](https://github.com/user-attachments/assets/05a81426-2427-44ac-94fd-7dadc5a326d1)
+![Teste rosto feliz](https://github.com/user-attachments/assets/0ed6733c-5d09-4ba9-81c0-b205bac22602)
+![Teste rosto sonolento](https://github.com/user-attachments/assets/1cfe3113-c55e-4ed0-b7e7-ef4056fa9848)
+![Teste rosto triste](https://github.com/user-attachments/assets/80162cd6-51f3-4758-a23c-515e3d843c71)
